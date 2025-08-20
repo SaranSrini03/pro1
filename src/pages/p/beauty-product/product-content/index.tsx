@@ -1,0 +1,52 @@
+"use client";
+import { useState } from "react";
+import Sidebar from "@/components/Sidebar";
+import AnimatedTable from "@/components/AnimatedTable";
+import data from "@/data/influencer";
+import Header from "@/components/Header";
+
+export default function ProductContentPage() {
+  const [currentPage, setCurrentPage] = useState(1);
+  const rowsPerPage = 10;
+
+  // Flatten productContent arrays across all influencers
+  const productContentData = data.flatMap((influencer) =>
+    influencer.productContent.map((pc) => ({
+      influencerName: influencer.name,
+      influencerUsername: influencer.username,
+      avatar: influencer.avatar,
+      role: influencer.role || "N/A",
+      invitation: influencer.invitation || "N/A",
+      ...pc,
+    }))
+  );
+
+  const totalPages = Math.ceil(productContentData.length / rowsPerPage);
+  const startIndex = (currentPage - 1) * rowsPerPage;
+  const currentData = productContentData.slice(startIndex, startIndex + rowsPerPage);
+
+  return (
+    <div className="flex flex-col min-h-screen bg-white text-sm">
+      {/* Header across the top */}
+      <Header />
+
+      <div className="flex flex-1">
+        {/* Sidebar on the left */}
+        <Sidebar />
+
+        {/* Main Content */}
+        <main className="flex-1 p-6 overflow-x-auto">
+          <AnimatedTable
+            currentData={currentData}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            totalPages={totalPages}
+            type="productContent"
+            containerVariants={undefined}
+            rowVariants={undefined}
+          />
+        </main>
+      </div>
+    </div>
+  );
+}
