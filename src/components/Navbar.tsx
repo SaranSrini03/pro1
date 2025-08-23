@@ -16,8 +16,8 @@ import {
 
 export default function NavBar() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const [mailCount, setMailCount] = useState(0);
-    const [notificationCount, setNotificationCount] = useState(0);
+    const [mailCount] = useState(0);
+    const [notificationCount] = useState(0);
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
 

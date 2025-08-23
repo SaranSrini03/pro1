@@ -1,5 +1,5 @@
 "use client";
-import { Link, GradientButton, useState } from "@/lib/imports";
+import { GradientButton, useState } from "@/lib/imports";
 
 export default function CampaignForm() {
   const [form, setForm] = useState({

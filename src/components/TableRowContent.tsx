@@ -13,42 +13,47 @@ import {
   Badge
 } from "@/lib/imports";
 
+import { Budget, Campaign, Influencer, Payment, ProductContent, ProductSending, Review, Start, TableRowItem, TableType } from "@/data/types";
+// Union of all possible row items
 
-export default function TableRowContent({ type, item }: { type: string; item: any }) {
+// -------------------- COMPONENT --------------------
+
+export default function TableRowContent({
+  type,
+  item,
+}: {
+  type: TableType;
+  item: TableRowItem;
+}) {
   const [open, setOpen] = useState(false);
+
+  // -------------------- Influencers --------------------
   if (type === "influencers") {
+    const influencer = item as Influencer;
     return (
       <>
         <TableCell className="p-4"><Checkbox /></TableCell>
         <TableCell className="p-3">
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 rounded-full overflow-hidden relative">
-              <Image
-                src={item.avatar}
-                alt={item.name}
-                fill
-                className="object-cover"
-              />
+              <Image src={influencer.avatar} alt={influencer.name} fill className="object-cover" />
             </div>
             <div>
-              <div className="font-medium text-gray-900">{item.name}</div>
-              <div className="text-gray-500 text-xs">{item.username}</div>
+              <div className="font-medium text-gray-900">{influencer.name}</div>
+              <div className="text-gray-500 text-xs">{influencer.username}</div>
             </div>
           </div>
         </TableCell>
-        <TableCell className="p-3 text-gray-700">{item.role}</TableCell>
+        <TableCell className="p-3 text-gray-700">{influencer.role}</TableCell>
         <TableCell className="p-3">
-
-          <Badge label={item.invitation} />
-
+          <Badge label={influencer.invitation} />
         </TableCell>
         <TableCell className="p-3">
           <Badge
-            label={item.status}
-            color={item.status === "Accepted" ? "text-green-600" : "text-red-600"}
-            bgColor={item.status === "Accepted" ? "bg-green-100" : "bg-red-100"}
+            label={influencer.status}
+            color={influencer.status === "Accepted" ? "text-green-600" : "text-red-600"}
+            bgColor={influencer.status === "Accepted" ? "bg-green-100" : "bg-red-100"}
           />
-
         </TableCell>
         <TableCell className="p-3 text-right">
           <Button className="text-gray-400 hover:text-red-500 min-w-0 p-1">
@@ -58,384 +63,256 @@ export default function TableRowContent({ type, item }: { type: string; item: an
       </>
     );
   }
-  // ---------------------------
+
+  // -------------------- Start --------------------
   if (type === "start") {
+    const start = item as Start;
     return (
       <>
-        <TableCell className="p-3">
-          <Checkbox />
-        </TableCell>
-
+        <TableCell className="p-3"><Checkbox /></TableCell>
         <TableCell className="p-3">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full overflow-hidden relative flex-shrink-0">
-              <Image
-                src={item.avatar}
-                alt={item.name}
-                fill
-                className="object-cover"
-              />
+              <Image src={start.avatar} alt={start.name} fill className="object-cover" />
             </div>
             <div className="flex flex-col justify-center">
-              <span className="font-medium text-gray-900">{item.name}</span>
-              <span className="text-gray-500 text-xs">{item.username}</span>
+              <span className="font-medium text-gray-900">{start.name}</span>
+              <span className="text-gray-500 text-xs">{start.username}</span>
             </div>
           </div>
         </TableCell>
-
-        <TableCell className="p-3 text-left">{item.audience}</TableCell>
-        <TableCell className="p-3 text-left">{item.engRate}</TableCell>
-        <TableCell className="p-3 text-left">{item.totalReach}</TableCell>
-
+        <TableCell className="p-3 text-left">{start.audience}</TableCell>
+        <TableCell className="p-3 text-left">{start.engRate}</TableCell>
+        <TableCell className="p-3 text-left">{start.totalReach}</TableCell>
         <TableCell className="p-3 text-left">
-          <TableCell className="p-3">
-            <Badge label="Links" color="text-green-600" bgColor="bg-green-100" href="/campaign/123" />
-          </TableCell>
+          <Badge label="Links" color="text-green-600" bgColor="bg-green-100" href="/campaign/123" />
         </TableCell>
-
-        <TableCell className="p-3 text-left">{item.earned}</TableCell>
-        <TableCell className="p-3 text-left">{item.post}</TableCell>
-
+        <TableCell className="p-3 text-left">{start.earned}</TableCell>
+        <TableCell className="p-3 text-left">{start.post}</TableCell>
         <TableCell className="p-3 text-left">
           <Badge
-            label={item.status}
-            color={item.status === "Ongoing" ? "text-green-600" : "text-red-600"}
-            bgColor={item.status === "Ongoing" ? "bg-green-100" : "bg-red-100"}
+            label={start.status}
+            color={start.status === "Ongoing" ? "text-green-600" : "text-red-600"}
+            bgColor={start.status === "Ongoing" ? "bg-green-100" : "bg-red-100"}
           />
         </TableCell>
       </>
     );
   }
 
-  // ----------------------------------
+  // -------------------- Product Content --------------------
   if (type === "productContent") {
+    const pc = item as ProductContent;
     return (
       <>
         <TableCell className="p-4 text-gray-500">
-          <Button
-            className="text-gray-400 min-w-0 p-1"
-            onClick={() => setOpen(true)}
-          >
+          <Button className="text-gray-400 min-w-0 p-1" onClick={() => setOpen(true)}>
             <Edit2 size={18} className="text-black" />
           </Button>
         </TableCell>
-
-        {/* Popup */}
         <CampaignFormPopup isOpen={open} onClose={() => setOpen(false)} />
-
         <TableCell className="p-3">
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 rounded-full overflow-hidden relative">
-              <Image
-                src={item.avatar}
-                alt={item.name}
-                fill
-                className="object-cover"
-              />
+              <Image src={pc.avatar} alt={pc.influencerName} fill className="object-cover" />
             </div>
             <div>
-              <div className="font-medium text-gray-900">{item.influencerName}</div>
-              <div className="text-gray-500 text-xs">{item.influencerUsername}</div>
+              <div className="font-medium text-gray-900">{pc.influencerName}</div>
+              <div className="text-gray-500 text-xs">{pc.influencerUsername}</div>
             </div>
           </div>
         </TableCell>
-        <TableCell className="p-3">
-          <Badge label="Links" color="text-red-600" bgColor="bg-red-100" href="/campaign/123" />
-        </TableCell>
         <TableCell className="p-3"><Badge label="Links" color="text-red-600" bgColor="bg-red-100" href="/campaign/123" /></TableCell>
-        <TableCell className="p-3">{item.type}</TableCell>
-        <TableCell className="p-3">{item.noOfPost}</TableCell>
-        <TableCell className="p-3"><Badge label="Links" color="text-red-600" bgColor="bg-red-100" href={item.productLink} /></TableCell>
-        <TableCell className="p-3">{item.deadline}</TableCell>
-        <TableCell className="p-3"><Badge label={item.status} color="text-green-600" bgColor="bg-green-100" /></TableCell>
-
+        <TableCell className="p-3"><Badge label="Links" color="text-red-600" bgColor="bg-red-100" href="/campaign/123" /></TableCell>
+        <TableCell className="p-3">{pc.type}</TableCell>
+        <TableCell className="p-3">{pc.noOfPost}</TableCell>
+        <TableCell className="p-3"><Badge label="Links" color="text-red-600" bgColor="bg-red-100" href={pc.productLink} /></TableCell>
+        <TableCell className="p-3">{pc.deadline}</TableCell>
+        <TableCell className="p-3"><Badge label={pc.status} color="text-green-600" bgColor="bg-green-100" /></TableCell>
       </>
     );
   }
-  // ------------------------------------
 
+  // -------------------- Budget --------------------
   if (type === "budget") {
+    const budget = item as Budget;
     return (
       <>
         <TableCell className="p-4 text-gray-500">
           <Button className="text-gray-400 hover:text-blue-500 min-w-0 p-1">
             <Edit2 size={18} className="text-black" />
-
           </Button>
         </TableCell>
         <TableCell className="p-3">
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 rounded-full overflow-hidden relative">
-              <Image
-                src={item.avatar}
-                alt={item.name}
-                fill
-                className="object-cover"
-              />
+              <Image src={budget.avatar} alt={budget.influencerName} fill className="object-cover" />
             </div>
             <div>
-              <div className="font-medium text-gray-900">{item.influencerName}</div>
-              <div className="text-gray-500 text-xs">{item.influencerUsername}</div>
+              <div className="font-medium text-gray-900">{budget.influencerName}</div>
+              <div className="text-gray-500 text-xs">{budget.influencerUsername}</div>
             </div>
           </div>
         </TableCell>
-        <TableCell className="p-3">{item.CPP}</TableCell>
-        <TableCell className="p-3">{item.CPS}</TableCell>
-        <TableCell className="p-3">{item.CPVID}</TableCell>
-        <TableCell className="p-3">{item.performanceHike}</TableCell>
-        <TableCell className="p-3">{item.spend}</TableCell>
+        <TableCell className="p-3">{budget.CPP}</TableCell>
+        <TableCell className="p-3">{budget.CPS}</TableCell>
+        <TableCell className="p-3">{budget.CPVID}</TableCell>
+        <TableCell className="p-3">{budget.performanceHike}</TableCell>
+        <TableCell className="p-3">{budget.spend}</TableCell>
         <TableCell className="p-3">
           <Badge
-            label={item.budget}
+            label={budget.budget}
             color="text-green-700"
             bgColor="bg-green-100"
             onClick={() => setOpen(true)}
           />
-
         </TableCell>
-
         <BudgetPopup isOpen={open} onClose={() => setOpen(false)} />
       </>
     );
   }
 
-  // --------------------------------
-
-
+  // -------------------- Product Sending --------------------
   if (type === "productSending") {
+    const ps = item as ProductSending;
     return (
       <>
         <TableCell className="p-4 text-gray-500">
-          <Button
-            className="text-gray-400 hover:text-blue-500 min-w-0 p-1"
-            onClick={() => setOpen(true)} // 🔹 open popup on click
-          >
+          <Button className="text-gray-400 hover:text-blue-500 min-w-0 p-1" onClick={() => setOpen(true)}>
             <Edit2 size={18} className="text-black" />
           </Button>
         </TableCell>
-
-        {/* Popup Component */}
         <ProductPopup isOpen={open} onClose={() => setOpen(false)} />
         <TableCell className="p-3">
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 rounded-full overflow-hidden relative">
-              <Image
-                src={item.avatar}
-                alt={item.name}
-                fill
-                className="object-cover"
-              />
+              <Image src={ps.avatar} alt={ps.influencerName} fill className="object-cover" />
             </div>
             <div>
-              <div className="font-medium text-gray-900">{item.influencerName}</div>
-              <div className="text-gray-500 text-xs">{item.influencerUsername}</div>
+              <div className="font-medium text-gray-900">{ps.influencerName}</div>
+              <div className="text-gray-500 text-xs">{ps.influencerUsername}</div>
             </div>
           </div>
         </TableCell>
-        <TableCell className="p-3">{item.product}</TableCell>
-        <TableCell className="p-3">{item.address}</TableCell>
-        <TableCell className="p-3">{item.noOfProduct}</TableCell>
-        <TableCell className="p-3">{item.trackingID}</TableCell>
+        <TableCell className="p-3">{ps.product}</TableCell>
+        <TableCell className="p-3">{ps.address}</TableCell>
+        <TableCell className="p-3">{ps.noOfProduct}</TableCell>
+        <TableCell className="p-3">{ps.trackingID}</TableCell>
         <TableCell className="Status">
-          <Badge
-            label={item.status}
-            color="text-green-700"
-            bgColor="bg-green-100"
-          />
+          <Badge label={ps.status} color="text-green-700" bgColor="bg-green-100" />
         </TableCell>
       </>
     );
   }
-  // -----------------------------------------
 
+  // -------------------- Review --------------------
   if (type === "review") {
+    const review = item as Review;
     return (
       <>
         <TableCell className="p-4 text-gray-500">
           <Button className="text-gray-400 hover:text-blue-500 min-w-0 p-1">
             <Edit2 size={18} className="text-black" />
-
           </Button>
         </TableCell>
         <TableCell className="p-3">
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 rounded-full overflow-hidden relative">
-              <Image
-                src={item.avatar}
-                alt={item.name}
-                fill
-                className="object-cover"
-              />
+              <Image src={review.avatar} alt={review.influencerName} fill className="object-cover" />
             </div>
             <div>
-              <div className="font-medium text-gray-900">{item.influencerName}</div>
-              <div className="text-gray-500 text-xs">{item.influencerUsername}</div>
+              <div className="font-medium text-gray-900">{review.influencerName}</div>
+              <div className="text-gray-500 text-xs">{review.influencerUsername}</div>
             </div>
           </div>
         </TableCell>
         <TableCell className="p-3">
-          <Badge
-            label={item.status}
-            color="text-green-700"
-            bgColor="bg-green-100"
-          />
+          <Badge label={review.status} color="text-green-700" bgColor="bg-green-100" />
         </TableCell>
-        <TableCell className="p-3">{item.contentType}</TableCell>
-        <TableCell className="p-3">{item.noOfPost}</TableCell>
+        <TableCell className="p-3">{review.contentType}</TableCell>
+        <TableCell className="p-3">{review.noOfPost}</TableCell>
         <TableCell className="p-3">
-          {item.approval.map((approval: string, index: number) => (
-            <Badge
-              key={index}
-              label={approval}
-              color="text-red-700"
-              bgColor="bg-red-100"
-            />
+          {review.approval.map((approval, index) => (
+            <Badge key={index} label={approval} color="text-red-700" bgColor="bg-red-100" />
           ))}
         </TableCell>
         <TableCell className="p-3">
-          <Badge
-            label={item.submittedPost}
-            color="text-black"
-            bgColor="bg-white"
-          />
+          <Badge label={review.submittedPost} color="text-black" bgColor="bg-white" />
         </TableCell>
       </>
     );
   }
-  // ---------------------------------------
 
+  // -------------------- Campaign --------------------
   if (type === "campaign") {
+    const camp = item as Campaign;
     return (
       <>
-        {/* Edit Icon */}
         <TableCell className="p-4"><Checkbox /></TableCell>
-
         <TableCell className="p-3">
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 rounded-full overflow-hidden relative">
-              <Image
-                src={item.avatar}
-                alt={item.name}
-                fill
-                className="object-cover"
-              />
+              <Image src={camp.avatar} alt={camp.influencerName} fill className="object-cover" />
             </div>
             <div>
-              <div className="font-medium text-gray-900">{item.influencerName}</div>
-              <div className="text-gray-500 text-xs">{item.influencerUsername}</div>
+              <div className="font-medium text-gray-900">{camp.influencerName}</div>
+              <div className="text-gray-500 text-xs">{camp.influencerUsername}</div>
             </div>
           </div>
         </TableCell>
-
-        {/* Post Link */}
-        <TableCell className="p-3">
-          <Badge label="Links" color="text-red-600" bgColor="bg-red-100" href="/campaign/123" />
-        </TableCell>
-
-        {/* No of Posts */}
-        <TableCell className="p-3">{item.noOfPosts}</TableCell>
-
-        {/* Audience */}
-        <TableCell className="p-3">{item.audience}</TableCell>
-
-        {/* Reach */}
-        <TableCell className="p-3">{item.reach}</TableCell>
-
-        {/* Likes */}
-        <TableCell className="p-3">{item.likes}</TableCell>
-
-        {/* Cost per Engagement */}
-        <TableCell className="p-3">{item.costPerEngagement}</TableCell>
-
-        {/* Engagement */}
-        <TableCell className="p-3">{item.engagement}</TableCell>
-
-        {/* Campaign Spend */}
-        <TableCell className="p-3">{item.campaignSpend}</TableCell>
-
-        {/* Conversion Rate */}
-        <TableCell className="p-3">{item.conversionRate}</TableCell>
-
-        {/* ROI */}
-        <TableCell className="p-3">{item.roi}</TableCell>
-
-        {/* Revenue Generated */}
-        <TableCell className="p-3">{item.revenueGenerated}</TableCell>
+        <TableCell className="p-3"><Badge label="Links" color="text-red-600" bgColor="bg-red-100" href="/campaign/123" /></TableCell>
+        <TableCell className="p-3">{camp.noOfPosts}</TableCell>
+        <TableCell className="p-3">{camp.audience}</TableCell>
+        <TableCell className="p-3">{camp.reach}</TableCell>
+        <TableCell className="p-3">{camp.likes}</TableCell>
+        <TableCell className="p-3">{camp.costPerEngagement}</TableCell>
+        <TableCell className="p-3">{camp.engagement}</TableCell>
+        <TableCell className="p-3">{camp.campaignSpend}</TableCell>
+        <TableCell className="p-3">{camp.conversionRate}</TableCell>
+        <TableCell className="p-3">{camp.roi}</TableCell>
+        <TableCell className="p-3">{camp.revenueGenerated}</TableCell>
       </>
     );
   }
 
-  // -----------------------------------
-
-
+  // -------------------- Payment --------------------
   if (type === "payment") {
+    const pay = item as Payment;
     return (
       <>
-        {/* Edit / Checkbox */}
-        <TableCell className="p-4">
-          <Checkbox />
-        </TableCell>
-
+        <TableCell className="p-4"><Checkbox /></TableCell>
         <TableCell className="p-3">
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 rounded-full overflow-hidden relative">
-              <Image
-                src={item.avatar}
-                alt={item.name}
-                fill
-                className="object-cover"
-              />
+              <Image src={pay.avatar} alt={pay.influencerName} fill className="object-cover" />
             </div>
             <div>
-              <div className="font-medium text-gray-900">{item.influencerName}</div>
-              <div className="text-gray-500 text-xs">{item.influencerUsername}</div>
+              <div className="font-medium text-gray-900">{pay.influencerName}</div>
+              <div className="text-gray-500 text-xs">{pay.influencerUsername}</div>
             </div>
           </div>
         </TableCell>
-
-        {/* CPP */}
-        <TableCell className="p-3">{item.CPP}</TableCell>
-
-        {/* CPS */}
-        <TableCell className="p-3">{item.CPS}</TableCell>
-
-        {/* CPVID */}
-        <TableCell className="p-3">{item.CPVID}</TableCell>
-
-        {/* Performance Hike */}
-        <TableCell className="p-3">{item.performanceHike}</TableCell>
-
-        {/* Spend */}
-        <TableCell className="p-3">{item.spend}</TableCell>
-
-        {/* Date */}
-        <TableCell className="p-3">{item.date}</TableCell>
-
-        {/* Status */}
+        <TableCell className="p-3">{pay.CPP}</TableCell>
+        <TableCell className="p-3">{pay.CPS}</TableCell>
+        <TableCell className="p-3">{pay.CPVID}</TableCell>
+        <TableCell className="p-3">{pay.performanceHike}</TableCell>
+        <TableCell className="p-3">{pay.spend}</TableCell>
+        <TableCell className="p-3">{pay.date}</TableCell>
         <TableCell className="p-3">
-          <Badge
-            label={item.status}
-            color="text-green-700"
-            bgColor="bg-green-100"
-          />
+          <Badge label={pay.status} color="text-green-700" bgColor="bg-green-100" />
         </TableCell>
-
-        {/* Payment */}
         <TableCell className="p-3">
           <Badge
-            label={item.payment}
+            label={pay.payment}
             color="text-white"
             bgColor="bg-green-900"
             onClick={() => setOpen(true)}
           />
         </TableCell>
-
         <PaymentPopup isOpen={open} onClose={() => setOpen(false)} />
       </>
     );
   }
-
-
 
   return null;
 }

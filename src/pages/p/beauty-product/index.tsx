@@ -24,8 +24,8 @@ const cards = [
 ];
 
 export default function BeautyCampaignsPage() {
-    const [activeFilter, setActiveFilter] = useState("all");
-    const [searchTerm, setSearchTerm] = useState("");
+    const [activeFilter] = useState("all");
+    const [searchTerm] = useState("");
 
     const filteredCards = cards.filter(card =>
         card.name.toLowerCase().includes(searchTerm.toLowerCase()) &&

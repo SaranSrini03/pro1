@@ -1,5 +1,5 @@
 "use client"
-import { Link, SearchSortBar, GradientButton } from "@/lib/imports";
+import { Link, SearchSortBar} from "@/lib/imports";
 
 export default function YourCampaignPage() {
     const campaigns = [

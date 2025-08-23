@@ -6,22 +6,25 @@ import {
   Paper,
   TableHeader,
   TableRowContent,
-  Pagination
+  Pagination,
+  Variants,
 } from "@/lib/imports";
 
-const containerVariants = {
+import { TableRowItem, TableType } from "@/data/types";
+
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.08, // 👈 rows come one by one
+      staggerChildren: 0.08,
       delayChildren: 0.2,
     },
   },
 };
 
-const rowVariants = {
-  hidden: { opacity: 0, y: 10 },   // start faded + slightly lower
+const rowVariants: Variants = {
+  hidden: { opacity: 0, y: 10 },
   show: {
     opacity: 1,
     y: 0,
@@ -29,13 +32,21 @@ const rowVariants = {
   },
 };
 
-export default function AnimatedTable({
+interface AnimatedTableProps<T extends TableRowItem> {
+  currentData: T[];
+  currentPage: number;
+  setCurrentPage: (page: number) => void;
+  totalPages: number;
+  type: TableType;
+}
+
+export default function AnimatedTable<T extends TableRowItem>({
   currentData,
   currentPage,
   setCurrentPage,
   totalPages,
   type,
-}: any) {
+}: AnimatedTableProps<T>) {
   return (
     <main className="flex-1 p-6">
       <motion.div
@@ -50,14 +61,13 @@ export default function AnimatedTable({
               <TableHeader type={type} />
             </TableHead>
 
-            {/* 👇 Animated tbody */}
             <motion.tbody
               key={currentPage}
               variants={containerVariants}
               initial="hidden"
               animate="show"
             >
-              {currentData.map((item: any, idx: number) => (
+              {currentData.map((item, idx) => (
                 <motion.tr
                   key={idx}
                   variants={rowVariants}
@@ -71,7 +81,6 @@ export default function AnimatedTable({
         </TableContainer>
       </motion.div>
 
-      {/* 👇 Pagination */}
       <Pagination
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}

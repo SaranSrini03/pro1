@@ -1,18 +1,19 @@
 "use client";
-import {useEffect , useState,GradientButton} from "@/lib/imports";
+import { useEffect, useState, GradientButton } from "@/lib/imports";
+import React from "react";
 
 function CampaignForm({ onClose }: { onClose: () => void }) {
   const [formData, setFormData] = useState({
-    productDetail: null,
+    productDetail: null as File | null,
     productLink: "",
     type: "",
     noOfPost: "",
-    guidelines: null,
+    guidelines: null as File | null,
     deadline: "",
     status: "",
   });
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, files } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -20,10 +21,10 @@ function CampaignForm({ onClose }: { onClose: () => void }) {
     }));
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(formData);
-    onClose(); // close after submit
+    onClose();
   };
 
   return (
@@ -116,9 +117,8 @@ function CampaignForm({ onClose }: { onClose: () => void }) {
         </div>
       </div>
 
-      {/* Submit Button */}
       <div className="flex justify-center mt-6">
-        <GradientButton label="Set" ></GradientButton>
+        <GradientButton label="Set" />
       </div>
     </form>
   );
@@ -131,7 +131,6 @@ export default function CampaignPopup({
   isOpen: boolean;
   onClose: () => void;
 }) {
-  // Close popup when pressing ESC
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -145,7 +144,6 @@ export default function CampaignPopup({
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
       <div className="bg-white p-6 rounded-2xl w-full max-w-3xl relative shadow-lg">
-        {/* Close button */}
         <button
           onClick={onClose}
           className="absolute top-3 right-3 text-gray-500 hover:text-gray-900"
@@ -153,10 +151,8 @@ export default function CampaignPopup({
           ✕
         </button>
 
-        {/* Title */}
         <h2 className="text-xl font-semibold mb-6">Campaign Form</h2>
 
-        {/* Campaign Form inside popup */}
         <CampaignForm onClose={onClose} />
       </div>
     </div>

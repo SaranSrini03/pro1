@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
@@ -10,17 +11,24 @@ export default function Home() {
         <p className="text-gray-600 lg:w-200 mb-4">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </p>
-        <img
-          src="/assets/image1.jpg"
-          alt="Campaign Visual"
-          className="mx-auto  max-w-full  mb-6"
-        />
+
+        <div className="mx-auto max-w-sm mb-6">
+          <Image
+            src="/assets/image1.jpg"
+            alt="Campaign Visual"
+            width={500}
+            height={300}
+            className="rounded-lg object-cover"
+            priority
+          />
+        </div>
+
         <Link
           href="/how-it-works"
           className="inline-flex items-center gap-2 ml-4 px-5 py-2 text-white text-sm font-semibold rounded-full bg-gradient-to-b from-[#264d99] to-[#66b3ff] shadow-md hover:opacity-90 transition"
         >
-          Let's start
-          <span className="flex items-center justify-center w-6 h-6 bg-p[#264d99] border border-white  rounded-full">
+          Let&apos;s start
+          <span className="flex items-center justify-center w-6 h-6 bg-[#264d99] border border-white rounded-full">
             <svg
               className="w-3 h-3 text-white"
               fill="none"

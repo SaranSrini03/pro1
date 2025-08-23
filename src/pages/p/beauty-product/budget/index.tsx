@@ -39,8 +39,6 @@ export default function BudgetPage() {
             setCurrentPage={setCurrentPage}
             totalPages={totalPages}
             type="budget"
-            containerVariants={undefined}
-            rowVariants={undefined}
           />
         </main>
       </div>

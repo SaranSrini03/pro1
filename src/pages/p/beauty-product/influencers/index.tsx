@@ -1,6 +1,5 @@
 "use client";
-import { useState } from "react";
-import { Sidebar, AnimatedTable, data as initialData, Header, GradientButton } from "@/lib/imports";
+import { Sidebar, AnimatedTable, data as initialData, Header, GradientButton,useState } from "@/lib/imports";
 
 export default function InfluencersPage() {
   const [currentPage, setCurrentPage] = useState(1);

@@ -1,5 +1,5 @@
 "use client";
-import { useState, Link, GradientButton } from "@/lib/imports";
+import { useState, GradientButton } from "@/lib/imports";
 
 export default function CampaignForm() {
     const [form, setForm] = useState({
@@ -17,10 +17,6 @@ export default function CampaignForm() {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
 
-    // const handleNext = () => {
-    //     const query = new URLSearchParams(form as any).toString();
-    //     router.push(`/create-a-campaign-2?${query}`);
-    // };
 
     return (
         <div className="min-h-screen bg-white px-4 py-10 sm:px-10 text-gray-800">

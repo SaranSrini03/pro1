@@ -1,6 +1,16 @@
 import { Button } from "@/lib/imports";
 
-export default function Pagination({ currentPage, setCurrentPage, totalPages }: any) {
+interface PaginationProps {
+  currentPage: number;
+  setCurrentPage: (page: number) => void;
+  totalPages: number;
+}
+
+export default function Pagination({
+  currentPage,
+  setCurrentPage,
+  totalPages,
+}: PaginationProps) {
   const pages: (number | string)[] = [];
   const maxVisible = 4;
 
@@ -16,20 +26,32 @@ export default function Pagination({ currentPage, setCurrentPage, totalPages }: 
 
   return (
     <div className="flex justify-center text-gray-600 items-center gap-2 mt-6 text-xs">
-      <Button onClick={() => setCurrentPage(Math.max(1, currentPage - 1))} disabled={currentPage === 1} className="px-3 py-1 border rounded disabled:opacity-50 normal-case">
+      <Button
+        onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
+        disabled={currentPage === 1}
+        className="px-3 py-1 border rounded disabled:opacity-50 normal-case"
+      >
         &lt; Previous
       </Button>
+
       {pages.map((page, idx) => (
         <Button
           key={idx}
           onClick={() => typeof page === "number" && setCurrentPage(page)}
           disabled={page === "..."}
-          className={`px-3 py-1 border rounded ${currentPage === page ? "bg-blue-500 text-white" : "hover:bg-gray-100"} ${page === "..." ? "cursor-default" : ""} normal-case`}
+          className={`px-3 py-1 border rounded ${
+            currentPage === page ? "bg-blue-500 text-white" : "hover:bg-gray-100"
+          } ${page === "..." ? "cursor-default" : ""} normal-case`}
         >
           {page}
         </Button>
       ))}
-      <Button onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))} disabled={currentPage === totalPages} className="px-3 py-1 border rounded disabled:opacity-50 normal-case">
+
+      <Button
+        onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
+        disabled={currentPage === totalPages}
+        className="px-3 py-1 border rounded disabled:opacity-50 normal-case"
+      >
         Next &gt;
       </Button>
     </div>

@@ -12,6 +12,8 @@ export type { AppProps } from "next/app";
 
 // ─── Framer Motion ─────────────────────────────────────
 export { motion } from "framer-motion";
+export type { Variants } from "framer-motion";
+
 
 // ─── MUI Components ────────────────────────────────────
 export {
