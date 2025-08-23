@@ -1,42 +1,53 @@
 "use client";
-import { Sidebar, AnimatedTable, data as initialData, Header, GradientButton,useState } from "@/lib/imports";
+import {
+  Sidebar,
+  AnimatedTable,
+  data as initialData,
+  Header,
+  GradientButton,
+  useState,
+} from "@/lib/imports";
 
 export default function InfluencersPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [buttonState, setButtonState] = useState<"send" | "start" | "hidden">("send");
   const [tableMode, setTableMode] = useState<"normal" | "start">("normal");
-  const [tableData, setTableData] = useState(initialData);
+  const [tableData, setTableData] = useState<typeof initialData>(initialData);
 
   const rowsPerPage = 10;
   const totalPages = Math.ceil(tableData.length / rowsPerPage);
   const startIndex = (currentPage - 1) * rowsPerPage;
 
-  // Determine current data based on table mode
-  let currentData;
+  // ✅ currentData is always an array
+  let currentData: typeof tableData = [];
+
   if (tableMode === "normal") {
     currentData = tableData.slice(startIndex, startIndex + rowsPerPage);
   } else if (tableMode === "start") {
     currentData = tableData
       .flatMap((inf) =>
         inf.start?.map((s) => ({
-          name: inf.name,
-          username: inf.username,
-          ...s
+          ...inf,         
+          ...s,            
         })) || []
       )
       .slice(startIndex, startIndex + rowsPerPage);
+
   }
+
 
   // Button click handler
   const handleButtonClick = () => {
     if (buttonState === "send") {
-      // Update all influencer invitations to "Invited"
-      const updatedData = tableData.map((item) => ({ ...item, invitation: "Invited" }));
+      const updatedData = tableData.map((item) => ({
+        ...item,
+        invitation: "Invited",
+      }));
       setTableData(updatedData);
       setButtonState("start");
     } else if (buttonState === "start") {
-      // Switch table to show `start` data
       setTableMode("start");
+      setCurrentPage(1); // ✅ reset page when switching
       setButtonState("hidden");
     }
   };
@@ -69,8 +80,6 @@ export default function InfluencersPage() {
             setCurrentPage={setCurrentPage}
             totalPages={totalPages}
             type={tableMode === "normal" ? "influencers" : "start"}
-            containerVariants={undefined}
-            rowVariants={undefined}
           />
         </div>
       </div>
