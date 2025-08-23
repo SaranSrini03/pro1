@@ -1,9 +1,22 @@
+
   const data = [
     {
       name: "Olivia Rhye", username: "@olivia", role: "Product Designer",
-      invitation: "Send invitation", status: "Accepted", avatar: "/assets/avatars/olivia.jpg",
+      invitation: "Invited", status: "Accepted", avatar: "/assets/avatars/olivia.jpg",
       statusAccepted: true, audience: 12000, engRate: "4.5%", abLinks: "62%",
       earned: "$1,200", postCount: 34, statusOfGoin: "Ongoing",
+
+      start: [
+        {
+          audience: 12000,
+          engRate: "4.5% - 11%",
+          totalReach: 15000,
+          link: "www.demolinks.com",
+          earned: "$1,200",
+          post:"12",
+          status: "Ongoing"
+        }
+      ],
 
       productContent: [
         {
@@ -89,6 +102,18 @@
       invitation: "Send invitation", status: "Accepted", avatar: "/assets/avatars/phoniex.jpg",
       statusAccepted: true, audience: 12000, engRate: "4.5%", abLinks: "62%",
       earned: "$1,200", postCount: 34, statusOfGoin: "Ongoing",
+
+      start: [
+        {
+          audience: 12000,
+          engRate: "4.5% - 11%",
+          totalReach: 15000,
+          link: "www.demolinks.com",
+          earned: "$1,200",
+          post:"12",
+          status: "Ongoing"
+        }
+      ],
 
       productContent: [
         {

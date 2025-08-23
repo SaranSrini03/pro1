@@ -1,5 +1,5 @@
 "use client";
-import {useEffect , useState} from "@/lib/imports";
+import {useEffect , useState,GradientButton} from "@/lib/imports";
 
 function CampaignForm({ onClose }: { onClose: () => void }) {
   const [formData, setFormData] = useState({
@@ -118,12 +118,7 @@ function CampaignForm({ onClose }: { onClose: () => void }) {
 
       {/* Submit Button */}
       <div className="flex justify-center mt-6">
-        <button
-          type="submit"
-          className="px-10 py-2 rounded-full text-white font-medium bg-gradient-to-r from-blue-500 to-indigo-500 hover:opacity-90"
-        >
-          Set
-        </button>
+        <GradientButton label="Set" ></GradientButton>
       </div>
     </form>
   );

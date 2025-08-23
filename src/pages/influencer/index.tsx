@@ -4,7 +4,8 @@ import {
   InfluencerCard,
   SearchSortBar,
   GradientButton,
-  toast
+  toast,
+  React
 } from "@/lib/imports";
 
 
@@ -14,6 +15,7 @@ const fakeData = Array.from({ length: 20 }, (_, i) => ({
 }));
 
 export default function InfluencerPage() {
+  const [page, setPage] = React.useState(1);
   const [added, setAdded] = useState(false);
   const handleClick = () => {
     if (!added) {

@@ -1,6 +1,6 @@
 "use client";
 
-import {useEffect} from "@/lib/imports";
+import {useEffect,GradientButton} from "@/lib/imports";
 export default function ProductPopup({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
   // Close popup when pressing ESC
   useEffect(() => {
@@ -64,12 +64,7 @@ export default function ProductPopup({ isOpen, onClose }: { isOpen: boolean; onC
 
           {/* Submit Button */}
           <div className="flex justify-center">
-            <button
-              type="submit"
-              className="px-6 py-2 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-medium shadow-md hover:opacity-90 transition"
-            >
-              Save
-            </button>
+        <GradientButton label="Save" ></GradientButton>
           </div>
         </form>
       </div>

@@ -39,7 +39,7 @@ export default function TableRowContent({ type, item }: { type: string; item: an
         <TableCell className="p-3 text-gray-700">{item.role}</TableCell>
         <TableCell className="p-3">
 
-          <Badge label={item.invitation} />   
+          <Badge label={item.invitation} />
 
         </TableCell>
         <TableCell className="p-3">
@@ -59,7 +59,55 @@ export default function TableRowContent({ type, item }: { type: string; item: an
     );
   }
   // ---------------------------
+  if (type === "start") {
+    return (
+      <>
+        <TableCell className="p-3">
+          <Checkbox />
+        </TableCell>
 
+        <TableCell className="p-3">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full overflow-hidden relative flex-shrink-0">
+              <Image
+                src={item.avatar}
+                alt={item.name}
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="flex flex-col justify-center">
+              <span className="font-medium text-gray-900">{item.name}</span>
+              <span className="text-gray-500 text-xs">{item.username}</span>
+            </div>
+          </div>
+        </TableCell>
+
+        <TableCell className="p-3 text-left">{item.audience}</TableCell>
+        <TableCell className="p-3 text-left">{item.engRate}</TableCell>
+        <TableCell className="p-3 text-left">{item.totalReach}</TableCell>
+
+        <TableCell className="p-3 text-left">
+          <TableCell className="p-3">
+            <Badge label="Links" color="text-green-600" bgColor="bg-green-100" href="/campaign/123" />
+          </TableCell>
+        </TableCell>
+
+        <TableCell className="p-3 text-left">{item.earned}</TableCell>
+        <TableCell className="p-3 text-left">{item.post}</TableCell>
+
+        <TableCell className="p-3 text-left">
+          <Badge
+            label={item.status}
+            color={item.status === "Ongoing" ? "text-green-600" : "text-red-600"}
+            bgColor={item.status === "Ongoing" ? "bg-green-100" : "bg-red-100"}
+          />
+        </TableCell>
+      </>
+    );
+  }
+
+  // ----------------------------------
   if (type === "productContent") {
     return (
       <>
@@ -374,7 +422,7 @@ export default function TableRowContent({ type, item }: { type: string; item: an
 
         {/* Payment */}
         <TableCell className="p-3">
-<Badge
+          <Badge
             label={item.payment}
             color="text-white"
             bgColor="bg-green-900"

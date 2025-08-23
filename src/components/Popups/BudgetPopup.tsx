@@ -1,8 +1,118 @@
 "use client";
+import { useEffect, useState,GradientButton } from "@/lib/imports";
 
-import { useEffect } from "@/lib/imports";
 
-export default function BudgetPopup({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
+function CampaignForm({ onClose }: { onClose: () => void }) {
+  const [formData, setFormData] = useState({
+    productDetail: null,
+    productLink: "",
+    type: "",
+    noOfPost: "",
+    guidelines: null,
+    deadline: "",
+    status: "",
+  });
+
+  const handleChange = (e: any) => {
+    const { name, value, files } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: files ? files[0] : value,
+    }));
+  };
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    console.log(formData);
+    onClose(); // close after submit
+  };
+
+  return (
+    <form
+      onSubmit={handleSubmit}
+      className="bg-white p-6 rounded-2xl shadow-sm w-full max-w-2xl"
+    >
+      <div className="grid grid-cols-2 gap-6">
+        {/* Product Detail */}
+        <div>
+          <label className="block mb-1 text-gray-700 text-sm">Cost Per Post</label>
+          <input
+            type="text"
+            name="productLink"
+            placeholder="name"
+            value={formData.productLink}
+            onChange={handleChange}
+            className="w-full border rounded-lg p-2 text-sm bg-gray-50"
+          />
+        </div>
+
+        {/* Product Link */}
+        <div>
+          <label className="block mb-1 text-gray-700 text-sm">Cost Per Story</label>
+          <input
+            type="text"
+            name="productLink"
+            placeholder="name"
+            value={formData.productLink}
+            onChange={handleChange}
+            className="w-full border rounded-lg p-2 text-sm bg-gray-50"
+          />
+        </div>
+
+        {/* Type */}
+        <div className="col-span-2">
+          <label className="block mb-1 text-gray-700 text-sm">Cost Per Video</label>
+          <input
+            type="text"
+            name="status"
+            value={formData.status}
+            onChange={handleChange}
+            className="w-full border rounded-lg p-2 text-sm bg-gray-50"
+          />
+        </div>
+
+        <div className="col-span-2">
+          <label className="block mb-1 text-gray-700 text-sm">Performance Engagement Hike</label>
+          <input
+            type="text"
+            name="status"
+            value={formData.status}
+            onChange={handleChange}
+            className="w-full border rounded-lg p-2 text-sm bg-gray-50"
+          />
+        </div>
+
+
+
+
+
+        <div className="col-span-2">
+          <label className="block mb-1 text-gray-700 text-sm">Budget</label>
+          <input
+            type="text"
+            name="status"
+            value={formData.status}
+            onChange={handleChange}
+            className="w-full border rounded-lg p-2 text-sm bg-gray-50"
+          />
+        </div>
+      </div>
+
+      {/* Submit Button */}
+      <div className="flex justify-center mt-6">
+        <GradientButton label="Set" ></GradientButton>
+      </div>
+    </form>
+  );
+}
+
+export default function CampaignPopup({
+  isOpen,
+  onClose,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+}) {
   // Close popup when pressing ESC
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -16,7 +126,7 @@ export default function BudgetPopup({ isOpen, onClose }: { isOpen: boolean; onCl
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-      <div className="bg-white p-6 rounded-2xl w-full max-w-lg relative shadow-lg">
+      <div className="bg-white p-6 rounded-2xl w-full max-w-3xl relative shadow-lg">
         {/* Close button */}
         <button
           onClick={onClose}
@@ -26,56 +136,10 @@ export default function BudgetPopup({ isOpen, onClose }: { isOpen: boolean; onCl
         </button>
 
         {/* Title */}
-        <h2 className="text-xl font-semibold mb-6">Set your budget</h2>
+        <h2 className="text-xl font-semibold mb-6">Set Your Budget</h2>
 
-        {/* Form */}
-        <form className="space-y-4">
-          <div className="grid grid-cols-2 gap-4">
-            <input
-              type="text"
-              placeholder="Cost per post (CPP)"
-              className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-              defaultValue="1000"
-            />
-            <input
-              type="text"
-              placeholder="Cost per story (CPS)"
-              className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-              defaultValue="1500"
-            />
-          </div>
-
-          <input
-            type="text"
-            placeholder="Cost per video (CPVID)"
-            className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-            defaultValue="1500"
-          />
-
-          <input
-            type="text"
-            placeholder="Performance Engagement hike"
-            className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-            defaultValue="5-10% of Eng - 1500"
-          />
-
-          <input
-            type="text"
-            placeholder="Budget"
-            className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-            defaultValue="30000"
-          />
-
-          {/* Submit Button */}
-          <div className="flex justify-center">
-            <button
-              type="submit"
-              className="px-6 py-2 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-medium shadow-md hover:opacity-90 transition"
-            >
-              Set
-            </button>
-          </div>
-        </form>
+        {/* Campaign Form inside popup */}
+        <CampaignForm onClose={onClose} />
       </div>
     </div>
   );
