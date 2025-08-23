@@ -36,8 +36,6 @@ export default function ReviewPage() {
           setCurrentPage={setCurrentPage}
           totalPages={totalPages}
           type="review" // 👈 tells AnimatedTable to render review layout
-          containerVariants={undefined}
-          rowVariants={undefined}
         />
       </div>
     </div>

@@ -36,8 +36,6 @@ export default function ProductSendingPage() {
           setCurrentPage={setCurrentPage}
           totalPages={totalPages}
           type="productSending"
-          containerVariants={undefined}
-          rowVariants={undefined}
         />
       </div>
     </div>

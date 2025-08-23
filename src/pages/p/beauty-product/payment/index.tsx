@@ -51,8 +51,6 @@ export default function InfluencersPage() {
             setCurrentPage={setCurrentPage}
             totalPages={totalPages}
             type="payment"
-            containerVariants={undefined}
-            rowVariants={undefined}
           />
         </main>
       </div>

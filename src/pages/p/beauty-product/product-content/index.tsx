@@ -39,8 +39,6 @@ export default function ProductContentPage() {
             setCurrentPage={setCurrentPage}
             totalPages={totalPages}
             type="productContent"
-            containerVariants={undefined}
-            rowVariants={undefined}
           />
         </main>
       </div>

@@ -26,7 +26,7 @@ export interface ProductContent {
   influencerName: string;
   influencerUsername: string;
   type: string;
-  noOfPost: string;
+  noOfPost: string | number;
   productLink: string;
   deadline: string;
   status: string;
@@ -94,11 +94,11 @@ export interface Payment {
   CPP: string;
   CPS: string;
   CPVID: string;
-  performanceHike: string;
-  spend: string;
-  date: string;
+  performanceHike: string | number;
+  spend: string | number;
+  date: string | number;
   status: string;
-  payment: string;
+  payment: string | number;
   name?: string;
 }
 
