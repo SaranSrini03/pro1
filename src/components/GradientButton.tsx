@@ -8,6 +8,7 @@ interface GradientButtonProps {
   width?: string;        // optional width
   onClick?: () => void;  
   variant?: "vertical" | "horizontal"; // gradient style
+  className?: string;    // new: accept custom classes
 }
 
 export default function GradientButton({
@@ -16,6 +17,7 @@ export default function GradientButton({
   width = "w-auto",
   onClick,
   variant = "vertical", // default
+  className = "",       // default empty
 }: GradientButtonProps) {
   const baseClasses = `
     block px-6 py-2 text-center text-white font-semibold rounded-full 
@@ -27,16 +29,19 @@ export default function GradientButton({
     horizontal: "bg-gradient-to-r from-[#1e40af] to-[#3b82f6] hover:shadow-xl",
   };
 
+  // Combine all classes
+  const combinedClasses = `${baseClasses} ${gradients[variant]} ${className}`;
+
   if (href) {
     return (
-      <Link href={href} onClick={onClick} className={`${baseClasses} ${gradients[variant]}`}>
+      <Link href={href} onClick={onClick} className={combinedClasses.trim()}>
         {label}
       </Link>
     );
   }
 
   return (
-    <button onClick={onClick} className={`${baseClasses} ${gradients[variant]}`}>
+    <button onClick={onClick} className={combinedClasses.trim()}>
       {label}
     </button>
   );

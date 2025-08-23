@@ -5,7 +5,7 @@ import { Sidebar, Header } from "@/lib/imports";
 
 export default function InfluencersPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50 text-sm">
+    <div className="flex flex-col min-h-screen bg-white text-sm">
       {/* Header at the top */}
       <Header />
 

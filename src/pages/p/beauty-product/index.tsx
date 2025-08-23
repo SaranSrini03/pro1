@@ -33,7 +33,7 @@ export default function BeautyCampaignsPage() {
     );
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-4">
+        <div className="min-h-screen w-auto bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl w-full">
                 {filteredCards.map((card, index) => (
                     <Link key={index} href={card.href}>

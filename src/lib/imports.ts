@@ -48,6 +48,7 @@ export { MdOutlineAttachMoney } from "react-icons/md";
 export { AiOutlineFileText } from "react-icons/ai";
 export { BsClipboardData } from "react-icons/bs";
 export { CheckCircledIcon } from "@radix-ui/react-icons";
+export { FiMenu, FiX } from "react-icons/fi";
 
 // ─── Custom Components ─────────────────────────────────
 export { default as Navbar } from "@/components/Navbar";

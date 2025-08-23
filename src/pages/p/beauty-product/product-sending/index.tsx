@@ -30,13 +30,15 @@ export default function ProductSendingPage() {
       {/* Content area */}
       <div className="flex flex-1">
         <Sidebar />
-        <AnimatedTable
-          currentData={currentData}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-          totalPages={totalPages}
-          type="productSending"
-        />
+        <main className="flex-1 p-6 overflow-x-auto">
+          <AnimatedTable
+            currentData={currentData}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            totalPages={totalPages}
+            type="productSending"
+          />
+        </main>
       </div>
     </div>
   );

@@ -8,13 +8,13 @@ export default function SearchSortBar() {
     const isOnYourCampaign = pathname === "/your-campaign";
 
     return (
-        <div className="flex items-center justify-between w-full py-12 px-4 text-gray-400">
+        <div className="flex flex-col md:flex-row items-center justify-between w-9xl  py-6 md:py-12 px-4 text-gray-400 gap-8 md:gap-0">
             {/* Left side: Search + Sort */}
-            <div className="flex items-center gap-3">
+            <div className="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto">
                 {/* Search Box */}
-                <div className="flex items-center border rounded-full px-2 w-90">
+                <div className="flex items-center border rounded-full px-2 sm:w-80 md:w-90">
                     <svg
-                        className="w-4 h-4 text-gray-400 mr-2"
+                        className="w-4 h-4 text-gray-400 mr-2 flex-shrink-0"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -36,12 +36,12 @@ export default function SearchSortBar() {
                 </div>
 
                 {/* Sort Dropdown */}
-                <div className="flex items-center  text-sm">
-                    <span className="mr-3 text-gray-600">Sort by</span>
+                <div className="flex items-center text-sm w-full sm:w-auto justify-center sm:justify-start">
+                    <span className="mr-3 text-gray-600 whitespace-nowrap">Sort by</span>
                     <select
                         value={sort}
                         onChange={(e) => setSort(e.target.value)}
-                        className="border text-left rounded px-9 py-1 text-sm"
+                        className="border text-left rounded px-4 sm:px-9 py-1 text-sm w-full sm:w-auto"
                     >
                         <option value="Name">Name</option>
                         <option value="Date">Date</option>
@@ -50,11 +50,13 @@ export default function SearchSortBar() {
             </div>
 
             {/* Right side: Button */}
-            <GradientButton
-                href={isOnYourCampaign ? "/create-a-campaign1" : "/your-campaign"}
-                label={isOnYourCampaign ? "Create a Campaign" : "Your Campaign"}
-            />
+            <div className="w-9xl  sm:w-auto flex justify-center">
+                <GradientButton
+                    href={isOnYourCampaign ? "/create-a-campaign1" : "/your-campaign"}
+                    label={isOnYourCampaign ? "Create a Campaign" : "Your Campaign"}
+                    className="w-9xl   sm:w-auto"
+                />
+            </div>
         </div>
     );
-
 }

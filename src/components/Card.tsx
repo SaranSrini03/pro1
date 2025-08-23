@@ -1,7 +1,7 @@
 import { React, Twitter, Linkedin, Globe, FaInstagram } from "@/lib/imports";
 export default function ProfileCard() {
     return (
-        <div className="w-[350px]  bg-white rounded-4xl shadow-lg overflow-hidden">
+        <div className="w-[350px]   bg-white rounded-4xl shadow-lg overflow-hidden">
 
             {/* Header with gradient background */}
             <div className="h-32 bg-gradient-to-r from-purple-300 via-purple-400 to-blue-500 relative">

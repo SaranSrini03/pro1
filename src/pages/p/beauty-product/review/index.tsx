@@ -30,13 +30,16 @@ export default function ReviewPage() {
       {/* Main content with Sidebar + Table */}
       <div className="flex flex-1">
         <Sidebar />
-        <AnimatedTable
-          currentData={currentData}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-          totalPages={totalPages}
-          type="review" // 👈 tells AnimatedTable to render review layout
-        />
+        {/* Table */}
+        <div className="flex-1 p-6 overflow-x-auto">
+          <AnimatedTable
+            currentData={currentData}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            totalPages={totalPages}
+            type="review" // 👈 tells AnimatedTable to render review layout
+          />
+        </div>
       </div>
     </div>
   );
