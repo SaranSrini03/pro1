@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
-import type { AppProps } from "next/app";
-import Navbar from "@/components/Navbar";
+import { AppProps, Navbar, Toaster } from "@/lib/imports";
+
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -8,6 +8,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <Navbar />
       <main className="p-4 bg-white">
         <Component {...pageProps} />
+        <Toaster position="top-right" />
       </main>
     </>
   );

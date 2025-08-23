@@ -1,7 +1,4 @@
-import React from 'react';
-import { Twitter, Linkedin, Globe } from 'lucide-react';
-import { FaInstagram } from 'react-icons/fa';
-
+import { React, Twitter, Linkedin, Globe, FaInstagram } from "@/lib/imports";
 export default function ProfileCard() {
     return (
         <div className="w-[350px]  bg-white rounded-4xl shadow-lg overflow-hidden">

@@ -1,11 +1,18 @@
-import { TableCell, Button, Checkbox } from "@mui/material";
-import Image from "next/image";
-import { Edit2, Trash2 } from "lucide-react";
-import React, { useState } from "react";
-import BudgetPopup from "@/components/Popups/BudgetPopup";
-import ProductPopup from "@/components/Popups/ProductPopup";
-import PaymentPopup from "@/components/Popups/PaymentPopup";
-import CampaignFormPopup from "@/components/Popups/CampaignFormPopup";
+import {
+  TableCell,
+  Button,
+  Checkbox,
+  Image,
+  Edit2,
+  Trash2,
+  useState,
+  BudgetPopup,
+  ProductPopup,
+  PaymentPopup,
+  CampaignFormPopup,
+  Badge
+} from "@/lib/imports";
+
 
 export default function TableRowContent({ type, item }: { type: string; item: any }) {
   const [open, setOpen] = useState(false);
@@ -23,10 +30,6 @@ export default function TableRowContent({ type, item }: { type: string; item: an
                 className="object-cover"
               />
             </div>
-
-
-
-
             <div>
               <div className="font-medium text-gray-900">{item.name}</div>
               <div className="text-gray-500 text-xs">{item.username}</div>
@@ -35,15 +38,17 @@ export default function TableRowContent({ type, item }: { type: string; item: an
         </TableCell>
         <TableCell className="p-3 text-gray-700">{item.role}</TableCell>
         <TableCell className="p-3">
-          <span className="text-purple-700 bg-purple-200 px-2 py-1 rounded-full text-xs">
-            {item.invitation}
-          </span>
+
+          <Badge label={item.invitation} />   
+
         </TableCell>
         <TableCell className="p-3">
-          <span className={`px-2 py-1 rounded-full text-xs ${item.status === "Accepted" ? "bg-green-100 text-green-600" : "bg-yellow-100 text-yellow-600"
-            }`}>
-            {item.status}
-          </span>
+          <Badge
+            label={item.status}
+            color={item.status === "Accepted" ? "text-green-600" : "text-red-600"}
+            bgColor={item.status === "Accepted" ? "bg-green-100" : "bg-red-100"}
+          />
+
         </TableCell>
         <TableCell className="p-3 text-right">
           <Button className="text-gray-400 hover:text-red-500 min-w-0 p-1">
@@ -86,13 +91,16 @@ export default function TableRowContent({ type, item }: { type: string; item: an
             </div>
           </div>
         </TableCell>
-        <TableCell className="p-3"><a href={item.productDetailsLink} className="text-blue-600 underline text-xs">Links</a></TableCell>
-        <TableCell className="p-3"><a href={item.productLink} className="text-blue-600 underline text-xs">Links</a></TableCell>
+        <TableCell className="p-3">
+          <Badge label="Links" color="text-red-600" bgColor="bg-red-100" href="/campaign/123" />
+        </TableCell>
+        <TableCell className="p-3"><Badge label="Links" color="text-red-600" bgColor="bg-red-100" href="/campaign/123" /></TableCell>
         <TableCell className="p-3">{item.type}</TableCell>
         <TableCell className="p-3">{item.noOfPost}</TableCell>
-        <TableCell className="p-3 text-xs">{item.guidelines}</TableCell>
+        <TableCell className="p-3"><Badge label="Links" color="text-red-600" bgColor="bg-red-100" href={item.productLink} /></TableCell>
         <TableCell className="p-3">{item.deadline}</TableCell>
-        <TableCell className="p-3">{item.status}</TableCell>
+        <TableCell className="p-3"><Badge label={item.status} color="text-green-600" bgColor="bg-green-100" /></TableCell>
+
       </>
     );
   }
@@ -129,13 +137,13 @@ export default function TableRowContent({ type, item }: { type: string; item: an
         <TableCell className="p-3">{item.performanceHike}</TableCell>
         <TableCell className="p-3">{item.spend}</TableCell>
         <TableCell className="p-3">
-          <Button
-            variant="text"
-            className="text-blue-600 underline text-xs"
+          <Badge
+            label={item.budget}
+            color="text-green-700"
+            bgColor="bg-green-100"
             onClick={() => setOpen(true)}
-          >
-            {item.budget}
-          </Button>
+          />
+
         </TableCell>
 
         <BudgetPopup isOpen={open} onClose={() => setOpen(false)} />
@@ -180,7 +188,13 @@ export default function TableRowContent({ type, item }: { type: string; item: an
         <TableCell className="p-3">{item.address}</TableCell>
         <TableCell className="p-3">{item.noOfProduct}</TableCell>
         <TableCell className="p-3">{item.trackingID}</TableCell>
-        <TableCell className="p-3">{item.status}</TableCell>
+        <TableCell className="Status">
+          <Badge
+            label={item.status}
+            color="text-green-700"
+            bgColor="bg-green-100"
+          />
+        </TableCell>
       </>
     );
   }
@@ -211,20 +225,32 @@ export default function TableRowContent({ type, item }: { type: string; item: an
             </div>
           </div>
         </TableCell>
-        <TableCell className="p-3">{item.status}</TableCell>
+        <TableCell className="p-3">
+          <Badge
+            label={item.status}
+            color="text-green-700"
+            bgColor="bg-green-100"
+          />
+        </TableCell>
         <TableCell className="p-3">{item.contentType}</TableCell>
         <TableCell className="p-3">{item.noOfPost}</TableCell>
         <TableCell className="p-3">
           {item.approval.map((approval: string, index: number) => (
-            <Button
+            <Badge
               key={index}
-              className="text-red-600 text-xs mr-2"
-            >
-              {approval}
-            </Button>
+              label={approval}
+              color="text-red-700"
+              bgColor="bg-red-100"
+            />
           ))}
         </TableCell>
-        <TableCell className="p-3">{item.submittedPost}</TableCell>
+        <TableCell className="p-3">
+          <Badge
+            label={item.submittedPost}
+            color="text-black"
+            bgColor="bg-white"
+          />
+        </TableCell>
       </>
     );
   }
@@ -254,7 +280,9 @@ export default function TableRowContent({ type, item }: { type: string; item: an
         </TableCell>
 
         {/* Post Link */}
-        <TableCell className="p-3">{item.postLink}</TableCell>
+        <TableCell className="p-3">
+          <Badge label="Links" color="text-red-600" bgColor="bg-red-100" href="/campaign/123" />
+        </TableCell>
 
         {/* No of Posts */}
         <TableCell className="p-3">{item.noOfPosts}</TableCell>
@@ -336,17 +364,22 @@ export default function TableRowContent({ type, item }: { type: string; item: an
         <TableCell className="p-3">{item.date}</TableCell>
 
         {/* Status */}
-        <TableCell className="p-3">{item.status}</TableCell>
+        <TableCell className="p-3">
+          <Badge
+            label={item.status}
+            color="text-green-700"
+            bgColor="bg-green-100"
+          />
+        </TableCell>
 
         {/* Payment */}
         <TableCell className="p-3">
-          <Button
-            variant="text"
-            className="text-blue-600 underline text-xs"
+<Badge
+            label={item.payment}
+            color="text-white"
+            bgColor="bg-green-900"
             onClick={() => setOpen(true)}
-          >
-            {item.payment}
-          </Button>
+          />
         </TableCell>
 
         <PaymentPopup isOpen={open} onClose={() => setOpen(false)} />

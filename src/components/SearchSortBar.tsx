@@ -1,10 +1,11 @@
 // components/SearchSortBar.js
-import { useState } from "react";
-import Link from 'next/link';
+import { useState, usePathname, GradientButton } from "@/lib/imports";
 
 export default function SearchSortBar() {
     const [search, setSearch] = useState("");
     const [sort, setSort] = useState("Name");
+    const pathname = usePathname();
+    const isOnYourCampaign = pathname === "/your-campaign";
 
     return (
         <div className="flex items-center justify-between w-full py-12 px-4 text-gray-400">
@@ -49,12 +50,10 @@ export default function SearchSortBar() {
             </div>
 
             {/* Right side: Button */}
-            <Link
-                href="/your-campaign"
-                className="inline-block ml-10 px-6 py-2 text-white rounded-full bg-gradient-to-b from-[#264d99] to-[#66b3ff]  text-sm font-semibold shadow-md"
-            >
-                Start Campaign
-            </Link>
+            <GradientButton
+                href={isOnYourCampaign ? "/create-a-campaign1" : "/your-campaign"}
+                label={isOnYourCampaign ? "Create a Campaign" : "Your Campaign"}
+            />
         </div>
     );
 

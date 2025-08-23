@@ -1,8 +1,13 @@
-import { motion } from "framer-motion";
-import { Table, TableContainer, TableHead, Paper } from "@mui/material";
-import TableHeader from "@/components/TableHeader";
-import TableRowContent from "@/components/TableRowContent";
-import Pagination from "@/components/Pagination";
+import {
+  motion,
+  Table,
+  TableContainer,
+  TableHead,
+  Paper,
+  TableHeader,
+  TableRowContent,
+  Pagination
+} from "@/lib/imports";
 
 const containerVariants = {
   hidden: { opacity: 0 },

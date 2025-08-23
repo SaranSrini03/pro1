@@ -1,17 +1,16 @@
-    "use client";
-import Link from "next/link";
-import { useState } from "react";
+"use client";
 import {
-    FaUsers, FaBoxOpen, FaCode, FaMoneyBillWave
+    Link,
+    useState,
+    FaUsers,
+    FaBoxOpen,
+    FaCode,
+    FaMoneyBillWave,
+    MdOutlineAttachMoney,
+    AiOutlineFileText,
+    BsClipboardData
+} from "@/lib/imports";
 
-} from "react-icons/fa";
-import {
-    MdOutlineAttachMoney
-} from "react-icons/md";
-import {
-    AiOutlineFileText
-} from "react-icons/ai";
-import { BsClipboardData } from "react-icons/bs";
 
 const cards = [
     { name: "Influencers", icon: <FaUsers className="text-blue-500" size={24} />, href: "/p/beauty-product/influencers", count: 24 },

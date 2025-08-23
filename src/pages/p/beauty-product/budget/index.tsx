@@ -1,9 +1,6 @@
 "use client";
-import { useState } from "react";
-import Sidebar from "@/components/Sidebar";
-import AnimatedTable from "@/components/AnimatedTable";
-import data from "@/data/influencer";
-import Header from "@/components/Header"; // 👈 import Header
+import { useState, Sidebar, AnimatedTable, data, Header } from "@/lib/imports";
+
 
 export default function BudgetPage() {
   const [currentPage, setCurrentPage] = useState(1);

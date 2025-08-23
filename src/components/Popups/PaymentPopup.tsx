@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import {useEffect} from "@/lib/imports";
 
 export default function PaymentPopup({
   isOpen,

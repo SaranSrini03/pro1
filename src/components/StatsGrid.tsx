@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "@/lib/imports";
 
 // ✅ Reusable hook for number counting
 function useCountUp(end: number, duration = 1) {
@@ -7,7 +7,7 @@ function useCountUp(end: number, duration = 1) {
 
   useEffect(() => {
     let start = 0;
-    const increment = end / (duration * 20); // ~60fps
+    const increment = end / (duration * 20);
     const timer = setInterval(() => {
       start += increment;
       if (start >= end) {
@@ -24,6 +24,20 @@ function useCountUp(end: number, duration = 1) {
   return count;
 }
 
+// ✅ Format number into K / M / B
+function formatNumber(num: number): string {
+  if (num >= 1_000_000_000) {
+    return (num / 1_000_000_000).toFixed(1).replace(/\.0$/, "") + "B";
+  }
+  if (num >= 1_000_000) {
+    return (num / 1_000_000).toFixed(1).replace(/\.0$/, "") + "M";
+  }
+  if (num >= 1_000) {
+    return (num / 1_000).toFixed(1).replace(/\.0$/, "") + "K";
+  }
+  return num.toString();
+}
+
 type Stat = { value: number; label: string };
 
 export default function StatsGrid({ stats }: { stats: Stat[] }) {
@@ -37,7 +51,7 @@ export default function StatsGrid({ stats }: { stats: Stat[] }) {
             className="border rounded-lg p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition"
           >
             <div className="text-3xl text-black font-semibold">
-              {count.toLocaleString()}
+              {formatNumber(count)}
             </div>
             <div className="text-gray-500 text-sm">{stat.label}</div>
           </div>

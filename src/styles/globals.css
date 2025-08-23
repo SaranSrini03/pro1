@@ -23,3 +23,25 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
 }
+
+.TableCell {
+  color: gray !important;
+  /* forces this color */
+  padding: 12px;
+  text-transform: capitalize;
+  font-family: 'Inter', sans-serif !important;
+}
+
+.Button {
+  color: green !important;
+  background-color: rgba(0, 202, 0, 0.37) !important;
+  border-radius: 25px !important;
+  /* forces this color */
+  padding:0px 10px !important ;
+  text-transform: capitalize ;
+  font-family: 'Inter', sans-serif !important;
+}
+.Status{
+  color: green !important;
+  text-transform: capitalize;
+}

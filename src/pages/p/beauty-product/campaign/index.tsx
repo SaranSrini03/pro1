@@ -1,10 +1,6 @@
 "use client";
-import { useState } from "react";
-import Sidebar from "@/components/Sidebar";
-import StatsGrid from "@/components/StatsGrid";
-import AnimatedTable from "@/components/AnimatedTable";
-import Header from "@/components/Header"; // import header
-import data from "@/data/influencer";
+import { useState, Sidebar, StatsGrid, AnimatedTable, Header, data } from "@/lib/imports";
+
 
 const stats = [
   { value: 102000, label: "Total Audience" },

@@ -1,9 +1,6 @@
 "use client";
-import { useState } from "react";
-import Sidebar from "@/components/Sidebar";
-import AnimatedTable from "@/components/AnimatedTable";
-import Header from "@/components/Header"; // 👈 import Header
-import data from "@/data/influencer";
+import { useState, Sidebar, AnimatedTable, Header, data } from "@/lib/imports";
+
 
 export default function ReviewPage() {
   const [currentPage, setCurrentPage] = useState(1);

@@ -1,17 +1,12 @@
-import Link from 'next/link';
-import { CheckCircledIcon } from "@radix-ui/react-icons";
+import { Link, CheckCircledIcon, GradientButton } from "@/lib/imports";
 
 export default function ClarifyingSummaryPage() {
     return (
         <div className="min-h-screen w-full bg-white py-10 px-6 flex justify-center">
             <div className="max-w-3xl w-full">
                 <div className="flex justify-end mb-10">
-                    <Link
-                        href="/your-campaign"
-                        className="inline-block px-6 py-2 text-white rounded-full bg-gradient-to-b from-[#264d99] to-[#66b3ff]  text-sm font-semibold shadow-md"
-                    >
-                        Your Campaign
-                    </Link>
+          <GradientButton href="/your-campaign" label="Your Campaign" />
+
                 </div>
                 <h1 className="text-2xl font-semibold text-black mb-10">Answer the clarifying questions</h1>
 

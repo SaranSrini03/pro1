@@ -1,88 +1,88 @@
-import { TableCell, TableRow } from "@mui/material";
+import { TableCell, TableRow } from "@/lib/imports";
 
 export default function TableHeader({ type }: { type: "influencers" | "productContent" | "budget" | "productSending" | "review" | "campaign" | "payment" }) {
   return (
     <TableRow className="text-left">
       {type === "influencers" ? (
         <>
-          <TableCell className="p-3 w-10"></TableCell>
-          <TableCell className="p-3">Name</TableCell>
-          <TableCell className="p-3">Role</TableCell>
-          <TableCell className="p-3">Invitation</TableCell>
-          <TableCell className="p-3">Status</TableCell>
-          <TableCell className="p-3 w-12"></TableCell>
+          <TableCell className="p-3 w-1 TableCell"></TableCell>
+          <TableCell className="p-3 TableCell">Name</TableCell>
+          <TableCell className="p-3 TableCell ">Role</TableCell>
+          <TableCell className="p-3 TableCell">Invitation</TableCell>
+          <TableCell className="p-3 TableCell">Status</TableCell>
+          <TableCell className="p-3 w-12 TableCell"></TableCell>
         </>
       ) : type === "productContent" ? (
         <>
-          <TableCell className="p-3 w-10"></TableCell>
-          <TableCell className="p-3">Name</TableCell>
-          <TableCell className="p-3">Product Details</TableCell>
-          <TableCell className="p-3">Product Link</TableCell>
-          <TableCell className="p-3">Type</TableCell>
-          <TableCell className="p-3">No. of Posts</TableCell>
-          <TableCell className="p-3">Guidelines</TableCell>
-          <TableCell className="p-3">Deadline</TableCell>
-          <TableCell className="p-3">Status</TableCell>
+          <TableCell className="p-3 w-10 TableCell"></TableCell>
+          <TableCell className="p-3 TableCell">Name</TableCell>
+          <TableCell className="p-3 TableCell">Product Details</TableCell>
+          <TableCell className="p-3 TableCell">Product Link</TableCell>
+          <TableCell className="p-3 TableCell">Type</TableCell>
+          <TableCell className="p-3 TableCell">No. of Posts</TableCell>
+          <TableCell className="p-3 TableCell">Guidelines</TableCell>
+          <TableCell className="p-3 TableCell">Deadline</TableCell>
+          <TableCell className="p-3 TableCell">Status</TableCell>
         </>
       ) : type === "budget" ? (
         <>
-          <TableCell className="p-3 w-10"></TableCell>
-          <TableCell className="p-3">Name</TableCell>
-          <TableCell className="p-3">CPP</TableCell>
-          <TableCell className="p-3">CPS</TableCell>
-          <TableCell className="p-3">CPVID</TableCell>
-          <TableCell className="p-3">Performance Hike</TableCell>
-          <TableCell className="p-3">Spend</TableCell>
-          <TableCell className="p-3">Budget</TableCell>
+          <TableCell className="p-3 w-10 TableCell"></TableCell>
+          <TableCell className="p-3 TableCell">Name</TableCell>
+          <TableCell className="p-3 TableCell">CPP</TableCell>
+          <TableCell className="p-3 TableCell">CPS</TableCell>
+          <TableCell className="p-3 TableCell">CPVID</TableCell>
+          <TableCell className="p-3 TableCell">Performance Hike</TableCell>
+          <TableCell className="p-3 TableCell">Spend</TableCell>
+          <TableCell className="p-3 TableCell">Budget</TableCell>
         </>
       ) : type === "productSending" ? (
         <>
-          <TableCell className="p-3 w-10"></TableCell>
-          <TableCell className="p-3">Name</TableCell>
-          <TableCell className="p-3">Product</TableCell>
-          <TableCell className="p-3">Shipping To</TableCell>
-          <TableCell className="p-3">No Of Product</TableCell>
-          <TableCell className="p-3">Tracking ID</TableCell>
-          <TableCell className="p-3">Status</TableCell>
+          <TableCell className="p-3 w-10 TableCell"></TableCell>
+          <TableCell className="p-3 TableCell">Name</TableCell>
+          <TableCell className="p-3 TableCell">Product</TableCell>
+          <TableCell className="p-3 TableCell">Shipping To</TableCell>
+          <TableCell className="p-3 TableCell">No Of Product</TableCell>
+          <TableCell className="p-3 TableCell">Tracking ID</TableCell>
+          <TableCell className="p-3 TableCell">Status</TableCell>
         </>
         ) : type === "review" ? (
             <>
-            <TableCell className="p-3 w-10"></TableCell>
-            <TableCell className="p-3">Name</TableCell>
-            <TableCell className="p-3">Status</TableCell>
-            <TableCell className="p-3">Content Type</TableCell>
-            <TableCell className="p-3">No Of Reels</TableCell>
-            <TableCell className="p-3">Approval</TableCell>
-            <TableCell className="p-3">Submitted Post</TableCell>
+            <TableCell className="p-3 w-10 TableCell"></TableCell>
+            <TableCell className="p-3 TableCell">Name</TableCell>
+            <TableCell className="p-3 TableCell">Status</TableCell>
+            <TableCell className="p-3 TableCell">Content Type</TableCell>
+            <TableCell className="p-3 TableCell">No Of Reels</TableCell>
+            <TableCell className="p-3 TableCell">Approval</TableCell>
+            <TableCell className="p-3 TableCell">Submitted Post</TableCell>
             </>
         ) : type === "campaign" ? (
             <>
-            <TableCell className="p-2 w-6"></TableCell>
-            <TableCell className="p-2">Name</TableCell>
-            <TableCell className="p-2">Post Link</TableCell>
-            <TableCell className="p-2">No Of Post</TableCell>
-            <TableCell className="p-2">Audience</TableCell>
-            <TableCell className="p-2">Reach</TableCell>
-            <TableCell className="p-2">Likes</TableCell>
-            <TableCell className="p-2">Cost per Engagement</TableCell>
-            <TableCell className="p-2">Engagement</TableCell>
-            <TableCell className="p-2">Campaign Spend</TableCell>
-            <TableCell className="p-2">Conversion Rate</TableCell>
-            <TableCell className="p-2">ROI %</TableCell>
-            <TableCell className="p-2">Revenue Generated</TableCell>
+            <TableCell className="p-2 w-6 TableCell"></TableCell>
+            <TableCell className="p-2 TableCell">Name</TableCell>
+            <TableCell className="p-2 TableCell">Post Link</TableCell>
+            <TableCell className="p-2 TableCell">No Of Post</TableCell>
+            <TableCell className="p-2 TableCell">Audience</TableCell>
+            <TableCell className="p-2  TableCell">Reach</TableCell>
+            <TableCell className="p-2 TableCell">Likes</TableCell>
+            <TableCell className="p-2 TableCell">Cost per Engagement</TableCell>
+            <TableCell className="p-2 TableCell">Engagement</TableCell>
+            <TableCell className="p-2 TableCell">Campaign Spend</TableCell>
+            <TableCell className="p-2 TableCell">Conversion Rate</TableCell>
+            <TableCell className="p-2 TableCell">ROI %</TableCell>
+            <TableCell className="p-2 TableCell">Revenue Generated</TableCell>
             </>
         ) : type === "payment" ? (
             <>
-            <TableCell className="p-2 w-6"></TableCell>
-            <TableCell className="p-2">Name</TableCell>
-            <TableCell className="p-2">CPP</TableCell>
-            <TableCell className="p-2">CPS</TableCell>
-            <TableCell className="p-2">CPVID</TableCell>
-            <TableCell className="p-2">Performance Hike</TableCell>
-            <TableCell className="p-2">Spend</TableCell>
-            <TableCell className="p-2">Date</TableCell>
-            <TableCell className="p-2">Status</TableCell>
-            <TableCell className="p-2">Payment</TableCell>
+            <TableCell className="p-2 w-6 TableCell"></TableCell>
+            <TableCell className="p-2 TableCell">Name</TableCell>
+            <TableCell className="p-2 TableCell">CPP</TableCell>
+            <TableCell className="p-2 TableCell">CPS</TableCell>
+            <TableCell className="p-2 TableCell">CPVID</TableCell>
+            <TableCell className="p-2 TableCell">Performance Hike</TableCell>
+            <TableCell className="p-2 TableCell">Spend</TableCell>
+            <TableCell className="p-2 TableCell">Date</TableCell>
+            <TableCell className="p-2 TableCell">Status</TableCell>
+            <TableCell className="p-2 TableCell">Payment</TableCell>
             </>
         ) : null
     }

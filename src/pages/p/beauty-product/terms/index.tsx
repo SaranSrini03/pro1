@@ -1,8 +1,7 @@
 // app/influencers/page.jsx
 "use client";
-import { useState } from "react";
-import Sidebar from "@/components/Sidebar";
-import Header from "@/components/Header"; // 👈 import Header
+import { Sidebar, Header } from "@/lib/imports";
+
 
 export default function InfluencersPage() {
   return (

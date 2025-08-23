@@ -1,7 +1,12 @@
 "use client";
-import { useState } from "react";
-import InfluencerCard from "@/components/Card";
-import SearchSortBar from "@/components/SearchSortBar";
+import {
+  useState,
+  InfluencerCard,
+  SearchSortBar,
+  GradientButton,
+  toast
+} from "@/lib/imports";
+
 
 
 const fakeData = Array.from({ length: 20 }, (_, i) => ({
@@ -9,6 +14,13 @@ const fakeData = Array.from({ length: 20 }, (_, i) => ({
 }));
 
 export default function InfluencerPage() {
+  const [added, setAdded] = useState(false);
+  const handleClick = () => {
+    if (!added) {
+      toast.success("Added to campaign ✅");
+      setAdded(true);
+    }
+  };
   const itemsPerPage = 8;
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -25,14 +37,17 @@ export default function InfluencerPage() {
       <div className="w-[94rem] mx-auto ">
         <SearchSortBar />
       </div>
-      <div className="flex justify-between items-center mb-12">
-        <h1 className="text-2xl font-semibold ml-30 text-gray-800">
+      <div className="flex items-center justify-between mb-12 max-w-[1615px]">
+        <h1 className="text-2xl ml-30 font-semibold text-gray-800">
           {fakeData.length} Results
         </h1>
-        <button className="bg-gradient-to-r from-[#264d99] to-[#66b3ff] text-white text-sm px-4 py-2 mr-30 rounded-full hover:opacity-90">
-          Add all to campaign
-        </button>
+        <GradientButton
+          label={added ? `Added ${fakeData.length} to Campaign` : `Add all to Campaign`}
+          onClick={handleClick}
+          width="w-auto"
+        />
       </div>
+
 
       <div className="flex flex-wrap justify-center gap-8">
         {visibleItems.map((item) => (

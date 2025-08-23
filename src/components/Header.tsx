@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { Search } from "lucide-react";
+import { useState, Search } from "@/lib/imports";
 
 export default function CampaignHeader() {
   const [sortBy, setSortBy] = useState("Name");

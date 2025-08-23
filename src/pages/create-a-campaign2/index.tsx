@@ -1,6 +1,5 @@
 "use client";
-import { useState } from "react";
-import Link from "next/link";
+import { useState, Link, GradientButton } from "@/lib/imports";
 
 export default function CampaignForm() {
     const [form, setForm] = useState({
@@ -28,12 +27,7 @@ export default function CampaignForm() {
             <div className="max-w-5xl mx-auto">
                 {/* Top right nav link */}
                 <div className="flex justify-end mb-20">
-                    <Link
-                        href="/your-campaign"
-                        className="inline-block px-6 py-2 text-white rounded-full bg-gradient-to-b from-[#264d99] to-[#66b3ff] text-sm font-semibold shadow-md"
-                    >
-                        Your Campaign
-                    </Link>
+                    <GradientButton href="/your-campaign" label="Your Campaign" />
                 </div>
 
                 <h1 className="text-2xl sm:text-3xl font-semibold mb-10">Enter your campaign details</h1>
@@ -63,12 +57,8 @@ export default function CampaignForm() {
 
                 {/* Next button */}
                 <div className="flex justify-center mt-10">
-                    <Link
-                        href="/answers"
-                        className="px-10 py-2 text-white rounded-full bg-gradient-to-b from-[#264d99] to-[#66b3ff] text-sm font-semibold shadow-md text-center"
-                    >
-                        Next
-                    </Link>
+                    <GradientButton href="/answers" label="Next" />
+
                 </div>
 
             </div>

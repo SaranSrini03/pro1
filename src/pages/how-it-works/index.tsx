@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import {GradientButton} from "@/lib/imports";
+
 
 export default function Home() {
   return (
@@ -6,12 +8,8 @@ export default function Home() {
       <div className="max-w-7xl mx-auto">
         {/* Top Right Button */}
         <div className="flex justify-end mb-20">
-          <Link
-            href="/your-campaign"
-            className="inline-block px-6 py-2 text-white rounded-full bg-gradient-to-b from-[#264d99] to-[#66b3ff]  text-sm font-semibold shadow-md"
-          >
-            Your Campaign
-          </Link>
+          <GradientButton href="/your-campaign" label="Start a Campaign" />
+
         </div>
 
         {/* Welcome Heading */}
@@ -47,12 +45,7 @@ export default function Home() {
           ))}
         </div>
         <div className="flex justify-center mt-32">
-          <Link
-            href="/create-a-campaign1"
-            className="inline-block px-10 py-2 text-white rounded-full bg-gradient-to-b from-[#264d99] to-[#66b3ff]  text-sm font-semibold shadow-md"
-          >
-            Create a Campaign
-          </Link>
+          <GradientButton href="/create-a-campaign1" label="Create a Campaign" />
         </div>
       </div>
     </div>

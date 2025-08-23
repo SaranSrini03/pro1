@@ -1,11 +1,16 @@
 "use client";
 
-import { usePathname } from "next/navigation";
-import Link from "next/link";
-import { FaUsers, FaBoxOpen, FaMoneyBillWave, FaCode } from "react-icons/fa";
-import { MdOutlineAttachMoney } from "react-icons/md";
-import { AiOutlineFileText } from "react-icons/ai";
-import { BsClipboardData } from "react-icons/bs";
+import {
+  usePathname,
+  Link,
+  FaUsers,
+  FaBoxOpen,
+  FaMoneyBillWave,
+  FaCode,
+  MdOutlineAttachMoney,
+  AiOutlineFileText,
+  BsClipboardData
+} from "@/lib/imports";
 
 export default function Sidebar() {
   const pathname = usePathname();

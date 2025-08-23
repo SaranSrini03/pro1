@@ -1,6 +1,5 @@
 "use client"
-import Link from "next/link";
-import SearchSortBar from "@/components/SearchSortBar";
+import { Link, SearchSortBar, GradientButton } from "@/lib/imports";
 
 export default function YourCampaignPage() {
     const campaigns = [

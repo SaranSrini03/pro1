@@ -1,8 +1,18 @@
 "use client";
-import Link from "next/link";
-import Image from "next/image";
-import { Bell, Mail, UserCircle, Menu, X } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
+import {
+  Link,
+  Image,
+  Bell,
+  Mail,
+  UserCircle,
+  Menu,
+  X,
+  useState,
+  useEffect,
+  useRef,
+  GradientButton
+} from "@/lib/imports";
+
 
 export default function NavBar() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -85,12 +95,8 @@ export default function NavBar() {
                     <Link href="/hub">Influencer Hub</Link>
                     <Link href="/plans">Plans</Link>
                     <Link href="/about">About Us</Link>
-                    <Link
-                        href="/your-campaign"
-                        className="ml-4 px-5 py-2 text-white text-sm font-semibold rounded-full bg-gradient-to-b from-[#264d99] to-[#66b3ff] shadow-md hover:opacity-90 transition"
-                    >
-                        Campaign
-                    </Link>
+                    <GradientButton href="/your-campaign" label="Campaign" />
+
                 </div>
 
                 {/* Icons Right */}
@@ -185,13 +191,7 @@ export default function NavBar() {
                     </div>
 
                     {/* Campaign CTA */}
-                    <Link
-                        href="/campaign"
-                        className="block px-5 py-3 text-center text-white font-semibold rounded-full bg-gradient-to-r from-[#1e40af] to-[#3b82f6] shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02]"
-                        onClick={() => setMobileMenuOpen(false)}
-                    >
-                        Start a Campaign
-                    </Link>
+                    <GradientButton href="/campaign" label="Campaign" variant="horizontal" onClick={() => setMobileMenuOpen(false)} />
 
                     {/* Icons Section */}
                     <div className="flex justify-center space-x-6 pt-4 border-t border-gray-100 mt-4">

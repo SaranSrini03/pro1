@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button } from "@/lib/imports";
 
 export default function Pagination({ currentPage, setCurrentPage, totalPages }: any) {
   const pages: (number | string)[] = [];
