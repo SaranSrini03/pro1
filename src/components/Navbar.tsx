@@ -191,7 +191,7 @@ export default function NavBar() {
                     </div>
 
                     {/* Campaign CTA */}
-                    <GradientButton href="/campaign" label="Campaign" variant="horizontal" onClick={() => setMobileMenuOpen(false)} />
+                    <GradientButton href="/your-campaign" label="Campaign" variant="horizontal" onClick={() => setMobileMenuOpen(false)} />
 
                     {/* Icons Section */}
                     <div className="flex justify-center space-x-6 pt-4 border-t border-gray-100 mt-4">

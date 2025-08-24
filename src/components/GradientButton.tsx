@@ -8,7 +8,8 @@ interface GradientButtonProps {
   width?: string;        // optional width
   onClick?: () => void;  
   variant?: "vertical" | "horizontal"; // gradient style
-  className?: string;    // new: accept custom classes
+  className?: string;  
+  colors?: string;       // custom gradient classes
 }
 
 export default function GradientButton({
@@ -16,8 +17,9 @@ export default function GradientButton({
   label,
   width = "w-auto",
   onClick,
-  variant = "vertical", // default
-  className = "",       // default empty
+  variant = "vertical",
+  className = "",      
+  colors,              
 }: GradientButtonProps) {
   const baseClasses = `
     block px-6 py-2 text-center text-white font-semibold rounded-full 
@@ -30,7 +32,7 @@ export default function GradientButton({
   };
 
   // Combine all classes
-  const combinedClasses = `${baseClasses} ${gradients[variant]} ${className}`;
+  const combinedClasses = `${baseClasses} ${colors ? colors : gradients[variant]} ${className}`;
 
   if (href) {
     return (
